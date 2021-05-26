@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photo_gram/screen/home_screen.dart';
 import 'package:photo_gram/screen/profile_screen.dart';
+import 'package:photo_gram/screen/search_screen.dart';
 
 class NavigationBarScreen extends StatefulWidget {
   AppBar homeAppBar() {
@@ -30,7 +31,11 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
       _appBar = widget.homeAppBar();
       _main = HomeScreen();
     }
-    if (_currentIndex == 2) {
+    if (_currentIndex == 1) {
+      _appBar = null;
+      _main = SearchScreen();
+    }
+    if (_currentIndex == 3) {
       _appBar = null;
       _main = ProfileScreen();
     }
@@ -55,6 +60,10 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
           const BottomNavigationBarItem(
             icon: const Icon(Icons.home),
             label: 'home',
+          ),
+          const BottomNavigationBarItem(
+            icon: const Icon(Icons.search),
+            label: 'search',
           ),
           const BottomNavigationBarItem(
             icon: const Icon(Icons.add),

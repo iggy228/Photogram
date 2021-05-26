@@ -28,6 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('Iggy228'),
+                      SizedBox(height: 8),
                       Text('987 followers'),
                     ],
                   )
@@ -43,13 +44,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
-        /*GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          itemCount: 9,
-          itemBuilder: (_, index) {
-            return Image.asset('images/cat2.png');
-          },
-        ),*/
+        Expanded(
+          child: Container(
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              itemCount: 9,
+              itemBuilder: (_, index) {
+                return Image.asset(
+                  'images/cat2.png',
+                  fit: BoxFit.cover,
+                );
+              },
+            ),
+          ),
+        ),
       ],
     );
   }
