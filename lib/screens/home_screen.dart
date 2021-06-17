@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gram/widget/post_card.dart';
+import 'package:photo_gram/widgets/post_card.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gram/screen/home_screen.dart';
-import 'package:photo_gram/screen/profile_screen.dart';
-import 'package:photo_gram/screen/search_screen.dart';
+import 'package:photo_gram/screens/home_screen.dart';
+import 'package:photo_gram/screens/profile_screen.dart';
+import 'package:photo_gram/screens/search_screen.dart';
 
 class NavigationBarScreen extends StatefulWidget {
   AppBar homeAppBar() {

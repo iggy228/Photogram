@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gram/screen/navigation_bar_screen.dart';
+import 'package:photo_gram/screens/auth/auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      routes: {
-        '/': (context) => NavigationBarScreen(),
-      },
+      home: Auth(),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.grey[900],
@@ -21,7 +19,11 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.white,
         iconTheme: IconThemeData(
           color: Colors.white
-        )
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(),
+        ),
       ),
     );
   }
