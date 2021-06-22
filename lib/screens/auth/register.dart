@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gram/models/UserId.dart';
+import 'package:photo_gram/services/auth.dart';
+import 'package:photo_gram/shared/validators.dart';
 
 class Register extends StatefulWidget {
 
@@ -12,9 +15,10 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String username = '';
+  String email = '';
   String password = '';
   String confirmPassword = '';
 
@@ -29,13 +33,22 @@ class _RegisterState extends State<Register> {
           children: <Widget>[
             // username field
             TextFormField(
+              validator: validateUsername,
               decoration: InputDecoration(hintText: 'Username'),
               onChanged: (String val) => setState(() => username = val),
+            ),
+            SizedBox(height: 8.0),
+            // email field
+            TextFormField(
+              validator: validateEmail,
+              decoration: InputDecoration(hintText: 'E-mail'),
+              onChanged: (String val) => setState(() => email = val),
             ),
             SizedBox(height: 8.0),
             // password field
             TextFormField(
               obscureText: true,
+              validator: validatePassword,
               decoration: InputDecoration(hintText: 'Password'),
               onChanged: (String val) => setState(() => password = val),
             ),
@@ -43,16 +56,24 @@ class _RegisterState extends State<Register> {
             // confirm password field
             TextFormField(
               obscureText: true,
+              validator: validatePassword,
               decoration: InputDecoration(hintText: 'Repeat password'),
               onChanged: (String val) => setState(() => confirmPassword = val),
             ),
             SizedBox(height: 8.0),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  if (password != confirmPassword) return;
+
+                  UserId? userId = await AuthService().register(email, password);
+                  print(userId);
+                }
+              },
               child: Text('Submit'),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: widget.showLoginHandler,
               child: Text('Login'),
             ),
           ],
