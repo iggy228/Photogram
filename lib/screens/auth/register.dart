@@ -15,7 +15,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   String username = '';
   String email = '';

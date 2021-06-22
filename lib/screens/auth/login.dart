@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gram/models/UserId.dart';
+import 'package:photo_gram/services/auth.dart';
+import 'package:photo_gram/shared/validators.dart';
 
 class Login extends StatefulWidget {
 
@@ -12,9 +15,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
-  String username = '';
+  String email = '';
   String password = '';
 
   @override
@@ -38,19 +41,26 @@ class _LoginState extends State<Login> {
               SizedBox(height: 16.0),
               // username field
               TextFormField(
-                decoration: InputDecoration(hintText: 'Username'),
-                onChanged: (String val) => setState(() => username = val),
+                validator: validateEmail,
+                decoration: InputDecoration(hintText: 'E-mail'),
+                onChanged: (String val) => setState(() => email = val),
               ),
               SizedBox(height: 8.0),
               // password field
               TextFormField(
                 obscureText: true,
+                validator: validatePassword,
                 decoration: InputDecoration(hintText: 'Password'),
                 onChanged: (String val) => setState(() => password = val),
               ),
               SizedBox(height: 8.0),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    UserId? userId = await AuthService().login(email, password);
+                    print(userId);
+                  }
+                },
                 child: Text('Submit'),
               ),
               TextButton(
