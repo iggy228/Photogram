@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_gram/screens/create_screen.dart';
 import 'package:photo_gram/screens/home_screen.dart';
 import 'package:photo_gram/screens/profile_screen.dart';
 import 'package:photo_gram/screens/search_screen.dart';
@@ -34,6 +35,10 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
     if (_currentIndex == 1) {
       _appBar = null;
       _main = SearchScreen();
+    }
+    if (_currentIndex == 2) {
+      _appBar = null;
+      _main = CreateScreen();
     }
     if (_currentIndex == 3) {
       _appBar = null;
