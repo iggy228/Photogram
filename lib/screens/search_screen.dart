@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -11,25 +12,14 @@ class _SearchScreenState extends State<SearchScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Row(
-          children: <Widget>[
-            Icon(Icons.search),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Search',
-                ),
-              ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Search',
+              suffixIcon: Icon(Icons.search),
             )
-          ],
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 5,
-            itemBuilder: (_, index) {
-              return Text('Hi');
-            },
           ),
         ),
       ],

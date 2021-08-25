@@ -11,12 +11,19 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       home: Auth(),
+      theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(),
+        ),
+      ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.grey[900],

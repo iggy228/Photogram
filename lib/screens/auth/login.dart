@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_gram/models/UserId.dart';
+import 'package:photo_gram/screens/navigation_bar_screen.dart';
 import 'package:photo_gram/services/auth.dart';
 import 'package:photo_gram/shared/validators.dart';
 
@@ -58,7 +59,13 @@ class _LoginState extends State<Login> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     UserId? userId = await AuthService().login(email, password);
-                    print(userId);
+
+                    if (userId != null) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => NavigationBarScreen())
+                      );
+                    }
                   }
                 },
                 child: Text('Submit'),
